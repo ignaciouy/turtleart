@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 	<mime-type type="application/x-turtle-art">
-		<comment xml:lang="en">Turtle Art</comment>
+		<comment xml:lang="en">Turtle Blocks</comment>
+		<comment xml:lang="es">TortuBlocks</comment>
 		<glob pattern="*.ta"/>
 		<glob pattern="*.tb"/>
 	</mime-type>
