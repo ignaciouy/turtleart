@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import os
 import sys
 
 if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
@@ -13,7 +13,8 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
     DATA_FILES = [
         ('icons', glob.glob('icons/*')),
         ('images', glob.glob('images/*')),
-        ('/usr/share/applications', ['turtleart.desktop'])
+        ('/usr/share/applications', ['turtleblocks.desktop']),
+        ('/usr/share/mime/packages', ['activity/mimetypes.xml'])
     ]
 
     setup(name='Turtle Art',
@@ -22,9 +23,16 @@ if len(sys.argv) > 1 and '--no-sugar' == sys.argv[1]:
           author_email="walter.bender@gmail.com",
           version='0.9.4',
           packages=['TurtleArt'],
-          scripts=['turtleart'],
+          scripts=['turtleblocks'],
           data_files=DATA_FILES,
           )
+
+    if sys.argv[1] == 'install':
+        os.rename('/usr/share/mime/packages/mimetypes.xml',
+                  '/usr/share/mime/packages/turtleart.xml')
+        os.system('update-mime-database /usr/share/mime')
+        os.system('update-desktop-database /usr/share/applications')
+
 else:
     from sugar.activity import bundlebuilder
 
